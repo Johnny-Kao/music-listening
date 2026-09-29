@@ -1,0 +1,92 @@
+[
+  {
+    "title": "E15｜主題識別鎖定實驗",
+    "date": "2026-09-30",
+    "file": "./audio/2026-09-30-e15-identity-carrier-lock.mp3",
+    "concept": "先鎖住主旋律的節奏識別，再分階段改變音高、和聲與低音，測試段落之間能不能維持同一首歌的感覺。"
+  },
+  {
+    "title": "旋律與和聲版本 07",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-07.mp3",
+    "concept": "重新以可哼主旋律、和弦功能、低音走向與導向音一起設計。"
+  },
+  {
+    "title": "可哼主旋律版本 06",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-06.mp3",
+    "concept": "保留上一版左手伴奏，重新集中設計可哼、可記的右手主旋律。"
+  },
+  {
+    "title": "雙手鋼琴版本 05",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-05.mp3",
+    "concept": "重新以右手主旋律、左手低音伴奏的分工方式編寫。"
+  },
+  {
+    "title": "整體和聲版本 04",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-04.mp3",
+    "concept": "以整首 30 秒為單位重新設計和聲、低音與段落銜接。"
+  },
+  {
+    "title": "和聲修正版 03",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-03.mp3",
+    "concept": "保留上一版旋律與節奏，重新設計和聲、聲部連接與低音走向。"
+  },
+  {
+    "title": "單主題衍生實驗 02",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-02.mp3",
+    "concept": "依照上一版回饋修改：更連續的主旋律、和聲與低音推進。"
+  },
+  {
+    "title": "單主題衍生實驗 01",
+    "date": "2026-09-29",
+    "file": "./audio/2026-09-29-01.mp3",
+    "concept": "單一主題持續發展的作曲實驗。"
+  },
+  {
+    "title": "卡農｜第一次彈奏",
+    "date": "2026-09-28",
+    "file": "./audio/canon-humanized-v1.mp3",
+    "category": "piano",
+    "performance_intent": "第一次把卡農往真人演奏方向調整，先找整體的流動感。"
+  },
+  {
+    "title": "卡農｜第二次彈奏",
+    "date": "2026-09-28",
+    "file": "./audio/canon-interpretive-v5.mp3",
+    "category": "piano",
+    "performance_intent": "讓句子更連續，減少每個音像被切開的感覺。"
+  },
+  {
+    "title": "卡農｜第三次彈奏",
+    "date": "2026-09-29",
+    "file": "./audio/canon-interpretive-v6.mp3",
+    "category": "piano",
+    "performance_intent": "開始把力度、左右手差異與句子呼吸加入演奏。"
+  },
+  {
+    "title": "卡農｜第四次彈奏",
+    "date": "2026-09-29",
+    "file": "./audio/canon-interpretive-v7.mp3",
+    "category": "piano",
+    "performance_intent": "讓重音、力度與呼吸不要每次都一樣。"
+  },
+  {
+    "title": "卡農｜第五次彈奏",
+    "date": "2026-09-29",
+    "file": "./audio/canon-interpretive-v8.mp3",
+    "category": "piano",
+    "performance_intent": "使用更自然的鋼琴音色，重點轉向情緒、力度與速度的演奏表達。"
+  },
+  {
+    "title": "卡農｜第六次彈奏",
+    "date": "2026-09-30",
+    "file": "./audio/canon-interpretive-v9.mp3",
+    "category": "piano",
+    "performance_intent": "把太用力、太平均的重音收掉，讓手指重量有層次；在過度順暢的地方加入自然偏差，並在後段用稍微拖一下、再跳出去的方式增加炫技感與情緒。"
+  }
+]

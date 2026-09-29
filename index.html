@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Johnny 的音樂實驗</title>
+  <meta name="description" content="Johnny 的音樂實驗：鋼琴演奏記錄與音樂創作 Demo。" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0f1115;
+      --panel:#171a21;
+      --text:#f4f6f8;
+      --muted:#9aa3ad;
+      --line:#2a3039;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    main {
+      width:min(920px,calc(100% - 32px));
+      margin:0 auto;
+      padding:64px 0 80px;
+    }
+    header { margin-bottom:42px; }
+    h1 {
+      margin:0 0 10px;
+      font-size:clamp(34px,6vw,56px);
+      letter-spacing:-0.04em;
+      font-weight:680;
+    }
+    .sub {
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+    }
+    .group { margin-top:36px; }
+    .group h2 {
+      margin:0 0 6px;
+      font-size:22px;
+      letter-spacing:-0.02em;
+    }
+    .group-note {
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.65;
+    }
+    .tracks { display:grid; gap:14px; }
+    .track {
+      border:1px solid var(--line);
+      background:var(--panel);
+      border-radius:16px;
+      padding:18px;
+    }
+    details.track {
+      padding:0;
+      overflow:hidden;
+    }
+    details.track summary {
+      list-style:none;
+      cursor:pointer;
+      padding:18px;
+      -webkit-tap-highlight-color:transparent;
+    }
+    details.track summary::-webkit-details-marker {
+      display:none;
+    }
+    details.track summary .track-head {
+      margin-bottom:0;
+    }
+    details.track[open] summary {
+      padding-bottom:12px;
+    }
+    .track-body {
+      padding:0 18px 18px;
+    }
+    .expand-hint {
+      margin-top:7px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    details.track[open] .expand-hint {
+      display:none;
+    }
+    .track-head {
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:flex-start;
+      margin-bottom:14px;
+    }
+    .title {
+      font-size:17px;
+      line-height:1.35;
+      font-weight:630;
+    }
+    .meta {
+      margin-top:5px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .field {
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+    }
+    .field:first-child {
+      margin-top:0;
+      padding-top:0;
+      border-top:0;
+    }
+    .field-label {
+      margin-bottom:4px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+      letter-spacing:.04em;
+    }
+    .field-value {
+      font-size:14px;
+      line-height:1.65;
+    }
+    .date {
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    audio {
+      width:100%;
+      height:42px;
+      display:block;
+    }
+    .track-actions {
+      display:flex;
+      justify-content:flex-end;
+      margin-top:12px;
+    }
+    .share-button {
+      appearance:none;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      border-radius:10px;
+      padding:9px 13px;
+      font:inherit;
+      font-size:13px;
+      line-height:1;
+      cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .share-button:active {
+      transform:scale(.98);
+    }
+    .track.highlight {
+      border-color:#6f7b8a;
+      box-shadow:0 0 0 1px #6f7b8a inset;
+    }
+    .archive {
+      margin-top:14px;
+    }
+    .archive > summary {
+      list-style:none;
+      cursor:pointer;
+      color:var(--muted);
+      font-size:13px;
+      padding:10px 2px;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .archive > summary::-webkit-details-marker {
+      display:none;
+    }
+    .archive > summary::after {
+      content:" ›";
+    }
+    .archive[open] > summary::after {
+      content:" ︿";
+    }
+    .archive-tracks {
+      margin-top:4px;
+    }
+    .empty {
+      border:1px dashed var(--line);
+      border-radius:16px;
+      color:var(--muted);
+      padding:24px;
+      text-align:center;
+    }
+    footer {
+      margin-top:44px;
+      color:var(--muted);
+      font-size:12px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Johnny 的音樂實驗</h1>
+      <p class="sub">鋼琴記錄每一次演奏想怎麼彈；其他 Demo 記錄每一版音樂創作的概念。</p>
+    </header>
+
+    <section class="group">
+      <h2>鋼琴</h2>
+      <p class="group-note">把每一版都當作鋼琴手的一次演奏：重點是呼吸、力度、句子與情緒，不追求固定秒數，也不用工程式語言描述。</p>
+      <div id="pianoTracks" class="tracks">
+        <div class="empty">載入中…</div>
+      </div>
+      <details id="pianoArchive" class="archive">
+        <summary>查看其他彈奏</summary>
+        <div id="pianoArchiveTracks" class="tracks archive-tracks"></div>
+      </details>
+    </section>
+
+    <section class="group">
+      <h2>其他 Demo</h2>
+      <p class="group-note">每個版本只保留當時的創作概念，讓之後回來看時知道這一版想做什麼。</p>
+      <div id="demoTracks" class="tracks">
+        <div class="empty">載入中…</div>
+      </div>
+      <details id="demoArchive" class="archive">
+        <summary>查看其他實驗</summary>
+        <div id="demoArchiveTracks" class="tracks archive-tracks"></div>
+      </details>
+    </section>
+
+    <footer>Johnny Kao · 音樂實驗</footer>
+  </main>
+
+  <script>
+    const pianoRoot = document.querySelector("#pianoTracks");
+    const pianoArchive = document.querySelector("#pianoArchive");
+    const pianoArchiveRoot = document.querySelector("#pianoArchiveTracks");
+    const demoRoot = document.querySelector("#demoTracks");
+    const demoArchive = document.querySelector("#demoArchive");
+    const demoArchiveRoot = document.querySelector("#demoArchiveTracks");
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, c => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[c]));
+    }
+
+    function trackDetails(track, open = false, mode = "demo") {
+      const title = escapeHtml(track.title || "未命名");
+      const date = escapeHtml(track.date || "");
+      const file = encodeURI(track.file || "");
+      const trackId = trackIdFromFile(track.file || "");
+      const openAttr = open ? " open" : "";
+
+      const concept = escapeHtml(track.concept || track.note || "");
+      const performanceIntent = escapeHtml(track.performance_intent || "");
+
+      const details = mode === "piano"
+        ? `
+            ${performanceIntent ? `<div class="field"><div class="field-label">這次想怎麼彈</div><div class="field-value">${performanceIntent}</div></div>` : ""}
+          `
+        : `
+            ${concept ? `<div class="field"><div class="field-label">概念</div><div class="field-value">${concept}</div></div>` : ""}
+          `;
+
+      return `
+        <details class="track" id="track-${trackId}" data-track-id="${trackId}"${openAttr}>
+          <summary>
+            <div class="track-head">
+              <div>
+                <div class="title">${title}</div>
+                <div class="expand-hint">點一下展開聆聽</div>
+              </div>
+              <div class="date">${date}</div>
+            </div>
+          </summary>
+          <div class="track-body">
+            ${details}
+            <audio controls preload="metadata" src="${file}"></audio>
+            <div class="track-actions">
+              <button
+                class="share-button"
+                type="button"
+                data-share-title="${title}"
+                data-share-track="${trackId}"
+              >分享</button>
+            </div>
+          </div>
+        </details>
+      `;
+    }
+
+    function renderTrackGroup(root, tracks, { emptyText, openCount = 0, mode = "demo" } = {}) {
+      if (!tracks.length) {
+        root.innerHTML = `<div class="empty">${emptyText || "目前沒有內容。"}</div>`;
+        return;
+      }
+
+      root.innerHTML = tracks
+        .map((track, index) => trackDetails(track, index < openCount, mode))
+        .join("");
+    }
+
+    function renderSection(primaryRoot, archiveRoot, archiveDetails, tracks, {
+      recentCount = 3,
+      recentOpenCount = 0,
+      emptyText = "目前沒有內容。",
+      mode = "demo"
+    } = {}) {
+      const recent = tracks.slice(0, recentCount);
+      const archive = tracks.slice(recentCount);
+
+      renderTrackGroup(primaryRoot, recent, {
+        emptyText,
+        openCount: recentOpenCount,
+        mode
+      });
+
+      if (archive.length) {
+        archiveDetails.hidden = false;
+        renderTrackGroup(archiveRoot, archive, {
+          emptyText: "",
+          openCount: 0,
+          mode
+        });
+      } else {
+        archiveDetails.hidden = true;
+        archiveRoot.innerHTML = "";
+      }
+    }
+
+    function trackIdFromFile(file) {
+      const name = String(file).split("/").pop() || "track";
+      return name.replace(/\.mp3$/i, "").replace(/[^a-zA-Z0-9_-]/g, "-");
+    }
+
+    function shareUrlFor(trackId) {
+      const url = new URL(window.location.href);
+      url.search = "";
+      url.hash = "";
+      url.searchParams.set("track", trackId);
+      return url.toString();
+    }
+
+    async function shareTrack(button) {
+      const title = button.dataset.shareTitle || "Johnny 的音樂實驗";
+      const trackId = button.dataset.shareTrack || "";
+      const url = shareUrlFor(trackId);
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title,
+            text: `${title}｜Johnny 的音樂實驗`,
+            url
+          });
+          return;
+        } catch (error) {
+          if (error && error.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(url);
+        const original = button.textContent;
+        button.textContent = "已複製";
+        setTimeout(() => { button.textContent = original; }, 1400);
+      } catch (error) {
+        window.prompt("複製這個連結：", url);
+      }
+    }
+
+    function focusSharedTrack() {
+      const trackId = new URLSearchParams(window.location.search).get("track");
+      if (!trackId) return;
+
+      const card = document.querySelector(`[data-track-id="${CSS.escape(trackId)}"]`);
+      if (!card) return;
+
+      const archive = card.closest(".archive");
+      if (archive) archive.open = true;
+
+      if (card.tagName === "DETAILS") {
+        card.open = true;
+      }
+      card.classList.add("highlight");
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 120);
+    }
+
+    async function loadTracks() {
+      try {
+        const response = await fetch("./tracks.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("無法讀取音樂清單");
+        const tracks = await response.json();
+
+        const pianoTracks = tracks
+          .filter(track => track.category === "piano")
+          .reverse();
+        const demoTracks = tracks
+          .filter(track => track.category !== "piano");
+
+        renderSection(
+          pianoRoot,
+          pianoArchiveRoot,
+          pianoArchive,
+          pianoTracks,
+          {
+            recentCount: 3,
+            recentOpenCount: 1,
+            emptyText: "目前還沒有鋼琴錄音。",
+            mode: "piano"
+          }
+        );
+
+        renderSection(
+          demoRoot,
+          demoArchiveRoot,
+          demoArchive,
+          demoTracks,
+          {
+            recentCount: 3,
+            recentOpenCount: 3,
+            emptyText: "目前還沒有其他 Demo。",
+            mode: "demo"
+          }
+        );
+
+        document.querySelectorAll(".share-button").forEach(button => {
+          button.addEventListener("click", () => shareTrack(button));
+        });
+
+        focusSharedTrack();
+      } catch (error) {
+        pianoRoot.innerHTML = '<div class="empty">載入失敗。</div>';
+        demoRoot.innerHTML = '<div class="empty">載入失敗。</div>';
+      }
+    }
+
+    loadTracks();
+  </script>
+</body>
+</html>
