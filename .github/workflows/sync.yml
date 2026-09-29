@@ -1,0 +1,91 @@
+name: Sync Public Listening Mirror
+
+on:
+  schedule:
+    # 03:47 JST daily, after the private Music-Demo production deploy.
+    - cron: '47 18 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.sync-trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: music-listening-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Mirror current production site
+        env:
+          SOURCE_BASE: https://music-demo-34h.pages.dev
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+
+          base = pathlib.Path('.')
+          source = os.environ['SOURCE_BASE'].rstrip('/')
+
+          def download(rel):
+              rel = rel.lstrip('/')
+              url = source + '/' + urllib.parse.quote(rel, safe='/.-_')
+              req = urllib.request.Request(url, headers={'User-Agent': 'music-listening-mirror/1.0'})
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  data = r.read()
+              path = base / rel
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_bytes(data)
+              return data
+
+          download('index.html')
+          tracks_bytes = download('tracks.json')
+          tracks = json.loads(tracks_bytes.decode('utf-8'))
+
+          wanted = set()
+          for track in tracks:
+              ref = track.get('file')
+              if not ref:
+                  continue
+              rel = ref.removeprefix('./').lstrip('/')
+              if not rel.startswith('audio/'):
+                  raise SystemExit(f'Unexpected public asset path: {ref}')
+              wanted.add(rel)
+              data = download(rel)
+              if len(data) < 10_000:
+                  raise SystemExit(f'Audio file looks incomplete: {rel} ({len(data)} bytes)')
+
+          audio_dir = base / 'audio'
+          if audio_dir.exists():
+              for p in audio_dir.rglob('*'):
+                  if p.is_file() and p.as_posix() not in wanted:
+                      p.unlink()
+
+          (base / '.nojekyll').write_text('', encoding='utf-8')
+          print(f'Mirrored {len(tracks)} tracks and {len(wanted)} audio files.')
+          PY
+
+      - name: Commit mirror update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html tracks.json audio .nojekyll
+          if git diff --cached --quiet; then
+            echo "Public mirror already matches production."
+            exit 0
+          fi
+          git commit -m "Sync public listening mirror"
+          git push
