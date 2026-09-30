@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#1f241f" />
   <title>The Music Commonplace Book — Johnny Kao</title>
-  <meta name="description" content="Johnny Kao 的演奏與創作手記：鋼琴練習、詮釋與 MIDI 創作的個人工作筆記。" />
+  <meta name="description" content="The Music Commonplace Book — Johnny Kao 的演奏與創作手記，保存鋼琴練習、詮釋與 MIDI 創作的私人工作筆記。" />
   <style>
     :root{
       --desk:#1f241f;--desk2:#2b2d25;--paper:#e8ddc3;--paperHi:#f2ead7;
@@ -68,19 +68,8 @@
     .intro-note{display:grid;grid-template-columns:120px 1fr;gap:26px;align-items:start;margin:34px 0 38px}
     .label{padding-top:5px;color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
     .intro-note p{max-width:730px;margin:0;font-size:18px;line-height:1.85}
-    .contents{margin:0 0 62px;padding:26px 0 6px;border-top:1px solid var(--ruleStrong);border-bottom:1px solid var(--rule)}
-    .contents-title{margin:0 0 8px;color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
-    .contents-link{
-      display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:14px;align-items:center;min-height:72px;
-      padding:12px 0;color:inherit;text-decoration:none;border-top:1px solid rgba(84,72,52,.17);
-    }
-    .contents-link:first-of-type{border-top:0}
-    .contents-link:hover .contents-name,.contents-link:focus-visible .contents-name{color:var(--burgundy)}
-    .contents-roman{color:var(--burgundy);font-family:var(--sans);font-size:11px;letter-spacing:.16em}
-    .contents-name{display:block;margin-bottom:5px;font-size:22px;line-height:1.2}
-    .contents-desc{display:block;color:var(--muted);font-size:13px;line-height:1.55}
-    .contents-count{color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
     .section{margin-top:58px}
+    .intro-note + .section{margin-top:46px}
     .section-heading{display:flex;gap:14px;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--ruleStrong)}
     .roman{min-width:28px;color:var(--burgundy);font-family:var(--sans);font-size:12px;letter-spacing:.16em}
     .section-heading h2{margin:0;font-size:25px;font-weight:500;letter-spacing:.025em}
@@ -92,6 +81,7 @@
     details.entry[open]{margin-inline:-18px;padding-inline:18px;background:rgba(111,63,58,.045);box-shadow:inset 3px 0 0 rgba(111,63,58,.36)}
     details.entry>summary{list-style:none;cursor:pointer;padding:27px 0 25px;-webkit-tap-highlight-color:transparent}
     details.entry>summary::-webkit-details-marker{display:none}
+    details.entry>summary:focus-visible{outline:2px solid rgba(111,63,58,.34);outline-offset:5px}
     .entry-summary,.entry-body{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:34px;align-items:start}
     .entry-kicker{display:flex;justify-content:space-between;gap:16px;margin-bottom:10px;color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.15em;text-transform:uppercase}
     .entry-kicker-left{display:flex;align-items:center;gap:8px;min-width:0}
@@ -110,7 +100,9 @@
     .field-value{font-size:17px;line-height:1.85}
     .audio-player{display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px;align-items:center;margin-top:7px;padding:13px 0 14px;border-top:1px solid rgba(84,72,52,.19);border-bottom:1px solid rgba(84,72,52,.19)}
     .native-audio{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
-    .play-button{width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid rgba(111,63,58,.45);border-radius:50%;background:rgba(255,255,255,.13);color:var(--burgundy);cursor:pointer}
+    .play-button{width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid rgba(111,63,58,.45);border-radius:50%;background:rgba(255,255,255,.13);color:var(--burgundy);cursor:pointer;font-family:var(--sans);font-size:15px;line-height:1}
+    .play-button:hover{background:rgba(111,63,58,.07)}
+    .play-button:focus-visible{outline:2px solid rgba(111,63,58,.38);outline-offset:3px}
     .player-topline{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:8px;color:var(--muted);font-family:var(--sans);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
     .player-status{color:var(--burgundy)}.player-time{font-variant-numeric:tabular-nums;white-space:nowrap}
     .progress{width:100%;height:24px;margin:0;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer}
@@ -118,20 +110,22 @@
     .progress::-moz-range-track{height:2px;background:rgba(84,72,52,.28)}.progress::-moz-range-progress{height:2px;background:var(--burgundy)}
     .progress::-webkit-slider-thumb{width:12px;height:12px;margin-top:-5px;appearance:none;-webkit-appearance:none;border:1px solid var(--burgundy);border-radius:50%;background:var(--paperHi)}
     .progress::-moz-range-thumb{width:12px;height:12px;border:1px solid var(--burgundy);border-radius:50%;background:var(--paperHi)}
+    .progress:focus-visible{outline:2px solid rgba(111,63,58,.30);outline-offset:2px}
     .entry-actions{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-top:16px;color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
     .share-button{appearance:none;min-height:32px;padding:4px 0 2px;border:0;border-bottom:1px solid rgba(115,105,86,.4);background:none;color:var(--muted);font:inherit;letter-spacing:inherit;text-transform:uppercase;cursor:pointer}
+    .share-button:hover,.share-button:focus-visible{color:var(--burgundy);border-color:var(--burgundy);outline:none}
     .entry.highlight{background:rgba(111,63,58,.075);box-shadow:inset 3px 0 0 rgba(111,63,58,.58)}
     .empty{margin:26px 0 8px;padding:24px 0;border-bottom:1px solid var(--rule);color:var(--muted);font-size:15px;font-style:italic}
+    .error{color:var(--burgundy)}
     .toast{position:fixed;right:24px;bottom:24px;z-index:10;max-width:min(320px,calc(100% - 32px));padding:11px 14px;border:1px solid rgba(232,221,195,.2);background:rgba(31,36,31,.94);color:#f2ead7;box-shadow:0 14px 40px rgba(0,0,0,.28);font-family:var(--sans);font-size:12px;letter-spacing:.04em;opacity:0;transform:translateY(8px);pointer-events:none;transition:.18s}
     .toast.show{opacity:1;transform:translateY(0)}
     footer{display:flex;justify-content:space-between;gap:20px;margin-top:72px;padding-top:18px;border-top:1px solid var(--rule);color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
     @media(max-width:780px){
       .shell{width:min(100% - 18px,680px);margin:10px auto 34px}.folio{padding:40px 20px 50px}
-      .catalogue{flex-direction:column;gap:8px;margin-bottom:30px}.masthead{gap:14px;align-items:start}
-      h1{font-size:clamp(39px,12vw,58px)}.title-cn{margin-top:14px;font-size:19px}.seal{width:66px;height:66px;font-size:8px}
-      .intro-note{grid-template-columns:1fr;gap:9px;margin:30px 0 34px}.intro-note p{font-size:16px}
-      .contents{margin-bottom:50px}.contents-link{grid-template-columns:24px minmax(0,1fr);gap:10px;padding:14px 0}.contents-count{grid-column:2;margin-top:-7px}
-      .contents-name{font-size:20px}.section{margin-top:46px}.section-heading{flex-wrap:wrap;row-gap:7px}.section-heading h2{font-size:23px}.section-count{width:100%;margin-left:42px}
+      .catalogue{flex-direction:column;gap:7px;margin-bottom:24px}.masthead{grid-template-columns:1fr auto;gap:14px;align-items:start}
+      h1{font-size:clamp(39px,12vw,58px)}.title-cn{margin-top:14px;font-size:19px}.subtitle{font-size:15px;line-height:1.7}.seal{width:66px;height:66px;font-size:8px;letter-spacing:.11em}
+      .intro-note{grid-template-columns:1fr;gap:8px;margin:24px 0 28px}.intro-note p{font-size:16px;line-height:1.75}
+      .section{margin-top:44px}.intro-note + .section{margin-top:32px}.section-heading{flex-wrap:wrap;row-gap:7px}.section-heading h2{font-size:23px}.section-count{width:100%;margin-left:42px}
       .section-note{margin-left:0}.entry-summary,.entry-body{grid-template-columns:1fr;gap:10px}.marginal-label{margin:0;padding:4px 0 3px;font-family:var(--sans);font-size:9px;letter-spacing:.09em;text-transform:uppercase;transform:none}.marginal-label::before{display:none}
       details.entry[open]{margin-inline:-10px;padding-inline:10px}.entry-title{font-size:25px}.field-value{font-size:16px;line-height:1.75}.audio-player{grid-template-columns:48px minmax(0,1fr);gap:12px}.play-button{width:46px;height:46px}
       .player-topline{flex-direction:column;align-items:flex-start;gap:3px}.entry-actions{flex-wrap:wrap}.share-button{min-height:44px}.toast{right:16px;bottom:16px}footer{flex-direction:column}
@@ -140,14 +134,14 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast,details.entry{transition:none}}
   </style>
 </head>
-<body>
+<body data-version="5">
   <main class="shell">
     <article class="folio">
-      <div class="catalogue"><span>J.K. / MUS / 2026</span><span>Private Study · Tokyo</span></div>
+      <div class="catalogue"><span>J.K. / MUS / 2026</span><span>Vol. I · MMXXVI</span></div>
 
       <header class="masthead">
         <div>
-          <div class="eyebrow">A Private Working Book · Tokyo</div>
+          <div class="eyebrow">A Private Working Book</div>
           <h1>The Music Commonplace Book</h1>
           <div class="title-cn">演奏與創作手記</div>
           <p class="subtitle">Notes on performance, interpretation and composition.</p>
@@ -160,25 +154,11 @@
         <p>這是一本私人音樂工作冊。鋼琴頁面保存練習與詮釋中的判斷；MIDI 頁面則留下仍在形成中的構思、取捨與版本。這些記錄不是作品說明，而是為下一次演奏與創作留下的工作痕跡。</p>
       </div>
 
-      <nav class="contents" aria-label="Contents">
-        <div class="contents-title">Contents</div>
-        <a class="contents-link" href="#pianoSection">
-          <span class="contents-roman">I.</span>
-          <span><span class="contents-name">Piano Practice Journal</span><span class="contents-desc">Practice · interpretation · recordings</span></span>
-          <span class="contents-count" id="pianoContentsCount">Loading…</span>
-        </a>
-        <a class="contents-link" href="#midiSection">
-          <span class="contents-roman">II.</span>
-          <span><span class="contents-name">MIDI Composition Notebook</span><span class="contents-desc">Composition · arrangement · MIDI sketches</span></span>
-          <span class="contents-count" id="midiContentsCount">Loading…</span>
-        </a>
-      </nav>
-
       <section class="section" id="pianoSection" aria-labelledby="pianoHeading">
         <div class="section-heading">
           <span class="roman">I.</span><h2 id="pianoHeading">Piano Practice Journal</h2><span class="section-count" id="pianoSectionCount"></span>
         </div>
-        <p class="section-note">演奏練習與詮釋筆記。回聽每次錄音，用約略時間範圍記下值得回到的速度、觸鍵、聲部、呼吸、踏板與結構判斷。</p>
+        <p class="section-note">演奏練習與詮釋筆記。留下每次錄音中值得回到的觸鍵、聲部、呼吸、踏板與結構判斷。</p>
         <div id="pianoTracks" class="tracks"><div class="empty">載入鋼琴練習紀錄…</div></div>
       </section>
 
@@ -186,11 +166,11 @@
         <div class="section-heading">
           <span class="roman">II.</span><h2 id="midiHeading">MIDI Composition Notebook</h2><span class="section-count" id="midiSectionCount"></span>
         </div>
-        <p class="section-note">MIDI 創作與編曲札記。保存仍在形成中的旋律、和聲、低音、音色與結構選擇；需要定位段落時，也以約略時間範圍記下下一版值得繼續測試的方向。</p>
+        <p class="section-note">MIDI 創作與編曲札記。保存仍在形成中的旋律、和聲、低音、音色與結構選擇，以及下一版值得繼續測試的方向。</p>
         <div id="midiTracks" class="tracks"><div class="empty">載入 MIDI 創作紀錄…</div></div>
       </section>
 
-      <footer><span>Private working book · Tokyo · MMXXVI</span><span>Johnny Kao</span></footer>
+      <footer><span>Private working book · Tokyo</span><span>Johnny Kao</span></footer>
     </article>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -219,7 +199,7 @@
       const rawNote=isPiano?(track.performance_intent||track.note||""):(track.concept||track.note||"");
       const note=escapeHtml(rawNote);
       const preview=escapeHtml(teaser(rawNote));
-      const label=isPiano?"Practice memo":"Composition note";
+      const label=isPiano?"Performance note":"Composition note";
       const kicker=isPiano?`Practice No. ${sequence}`:`MIDI Sketch No. ${sequence}`;
       const margin=isPiano?"piano practice · interpretation record":"MIDI sketch · composition record";
       const latestTag=index===0?'<span class="latest-tag">Latest</span>':"";
@@ -264,7 +244,7 @@
 
     function renderTracks(root,tracks,mode,emptyText){root.innerHTML=tracks.length?tracks.map((t,i)=>entryMarkup(t,i,tracks.length,mode)).join(""):`<div class="empty">${escapeHtml(emptyText)}</div>`}
     function updateCounts(pianoCount,midiCount){
-      [["pianoContentsCount",pianoCount,"studies"],["pianoSectionCount",pianoCount,"studies"],["midiContentsCount",midiCount,"sketches"],["midiSectionCount",midiCount,"sketches"]].forEach(([id,count,noun])=>{const e=document.getElementById(id);if(e)e.textContent=`${count} ${noun}`})
+      [["pianoSectionCount",pianoCount,"studies"],["midiSectionCount",midiCount,"sketches"]].forEach(([id,count,noun])=>{const e=document.getElementById(id);if(e)e.textContent=`${count} ${noun}`})
     }
     function showToast(msg){toast.textContent=msg;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),1800)}
     function shareUrlFor(trackId){const u=new URL(window.location.href);u.search="";u.hash="";u.searchParams.set("track",trackId);return u.toString()}
@@ -277,7 +257,9 @@
       const player=audio.closest("[data-player]");if(!player)return;
       const button=player.querySelector("[data-play]"),progress=player.querySelector("[data-progress]"),current=player.querySelector("[data-current]"),duration=player.querySelector("[data-duration]"),status=player.querySelector("[data-status]");
       const pct=audio.duration?(audio.currentTime/audio.duration)*100:0;
-      button.textContent=audio.paused?"▶":"Ⅱ";current.textContent=formatTime(audio.currentTime);duration.textContent=formatTime(audio.duration);
+      button.textContent=audio.paused?"▶":"Ⅱ";
+      button.setAttribute("aria-label",`${audio.paused?"播放":"暫停"} ${button.closest(".entry").querySelector(".entry-title")?.textContent||"音訊"}`);
+      current.textContent=formatTime(audio.currentTime);duration.textContent=formatTime(audio.duration);
       progress.value=Number.isFinite(pct)?pct:0;progress.style.setProperty("--played",`${Number.isFinite(pct)?pct:0}%`);
       status.textContent=audio.paused?(status.dataset.idle||status.textContent):"Playing";
     }
@@ -296,6 +278,11 @@
       });
       document.addEventListener("input",e=>{const p=e.target.closest("[data-progress]");if(!p)return;const a=p.closest("[data-player]").querySelector("audio");if(Number.isFinite(a.duration)&&a.duration>0)a.currentTime=(Number(p.value)/100)*a.duration});
       ["loadedmetadata","durationchange","timeupdate","play","pause","ended"].forEach(type=>document.addEventListener(type,e=>{if(!(e.target instanceof HTMLAudioElement)||!e.target.classList.contains("native-audio"))return;if(type==="play")pauseOtherAudio(e.target);updatePlayer(e.target)},true));
+      document.addEventListener("toggle",e=>{
+        const entry=e.target;
+        if(!(entry instanceof HTMLDetailsElement)||!entry.classList.contains("entry")||!entry.open)return;
+        requestAnimationFrame(()=>{const rect=entry.getBoundingClientRect();if(rect.top<0||rect.top>window.innerHeight*.72)entry.scrollIntoView({behavior:"smooth",block:"start"})});
+      },true);
     }
     async function loadTracks(){
       try{
@@ -305,8 +292,8 @@
         renderTracks(pianoRoot,piano,"piano","目前還沒有鋼琴練習錄音。");renderTracks(midiRoot,midi,"midi","目前還沒有 MIDI 創作紀錄。");
         updateCounts(piano.length,midi.length);initializePlayers();focusSharedTrack();
       }catch(error){
-        console.error(error);pianoRoot.innerHTML='<div class="empty">讀取音樂紀錄失敗。</div>';midiRoot.innerHTML="";
-        document.querySelectorAll(".contents-count,.section-count").forEach(el=>{el.textContent="—"});
+        console.error(error);const message="讀取音樂紀錄失敗。請確認 index.html、tracks.json 與 audio/ 位於同一個 GitHub Pages 專案。";pianoRoot.innerHTML=`<div class="empty error">${message}</div>`;midiRoot.innerHTML="";
+        document.querySelectorAll(".section-count").forEach(el=>{el.textContent="—"});
       }
     }
     bindInteractions();loadTracks();
