@@ -102,5 +102,12 @@
     "file": "./audio/canon-interpretive-v11.mp3",
     "category": "piano",
     "performance_intent": "轉回原調前，不要讓和聲先走、旋律後追；兩隻手的重量也要連著走，別一下太重、一下又散掉。"
+  },
+  {
+    "title": "卡農｜第九次彈奏",
+    "date": "2026-09-30",
+    "file": "./audio/canon-interpretive-v12-minor.mp3",
+    "category": "piano",
+    "performance_intent": "這次先走進 D 小調。不要只是把原來的音往下挪；有些地方要留住導音，有些上行句子反而要把六、七級抬起來。先讓旋律決定小調該怎麼走。"
   }
 ]
