@@ -88,5 +88,12 @@
     "file": "./audio/canon-interpretive-v9.mp3",
     "category": "piano",
     "performance_intent": "把太用力、太平均的重音收掉，讓手指重量有層次；在過度順暢的地方加入自然偏差，並在後段用稍微拖一下、再跳出去的方式增加炫技感與情緒。"
+  },
+  {
+    "title": "卡農｜第七次彈奏",
+    "date": "2026-09-30",
+    "file": "./audio/canon-interpretive-v10.mp3",
+    "category": "piano",
+    "performance_intent": "中後段短暫轉到 A 大調，保留原本主旋律的節奏與輪廓，讓同一個主題突然進入更明亮、華麗的空間，再經過和弦準備回到 D 大調。"
   }
 ]
