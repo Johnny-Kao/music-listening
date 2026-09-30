@@ -52,48 +52,48 @@
     "date": "2026-09-28",
     "file": "./audio/canon-practice-01.mp3",
     "category": "piano",
-    "performance_intent": "前二十秒別急。把拍子留寬一點，讓第一句自己展開。35–50 秒，右手往前說，左手退到後面。最後別太早告別，讓速度自己慢下來。"
+    "performance_intent": "開頭別急。把拍子留寬一點，讓第一句自己展開。右手往前說，左手退到後面；最後別太早告別。"
   },
   {
     "title": "卡農｜第二次彈奏",
     "date": "2026-09-28",
     "file": "./audio/canon-interpretive-v5.mp3",
     "category": "piano",
-    "performance_intent": "開頭先別把旋律說得太滿。45–70 秒讓右手連成一口氣；90–115 秒把重量慢慢帶上去，左手還是留輕。最後再鬆開。"
+    "performance_intent": "開頭別把旋律說得太滿。右手連成一口氣，重量慢慢帶上去；左手還是留輕。最後再鬆開。"
   },
   {
     "title": "卡農｜第三次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v6.mp3",
     "category": "piano",
-    "performance_intent": "30–50 秒，右手往前走，左手只托著。75–95 秒可以更有重量，但重音別排得太整齊。108 秒之後早一點開始收，結尾會更自然。"
+    "performance_intent": "右手往前走，左手只托著。可以更有重量，但重音別排得太整齊。結尾早一點開始收，會更自然。"
   },
   {
     "title": "卡農｜第四次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v7.mp3",
     "category": "piano",
-    "performance_intent": "35–50 秒別把句子切碎。60–80 秒讓重音跟著旋律走，不要停在同一個地方。105 秒後慢慢把速度和重量放掉。"
+    "performance_intent": "別把句子切碎。讓重音跟著旋律走，不要停在同一個地方。後面慢慢把速度和重量放掉。"
   },
   {
     "title": "卡農｜第五次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v8.mp3",
     "category": "piano",
-    "performance_intent": "35–50 秒右手要連，但不要黏。80–96 秒最容易彈重，重量只留給真正的句子高點。110 秒之後慢慢退，別突然變弱。"
+    "performance_intent": "右手要連，但不要黏。最容易彈重的地方，重量只留給真正的句子高點。結尾慢慢退，別突然變弱。"
   },
   {
     "title": "卡農｜第六次彈奏",
     "date": "2026-09-30",
     "file": "./audio/canon-interpretive-v9.mp3",
     "category": "piano",
-    "performance_intent": "35–45 秒太順了，反而少了一點呼吸。96–104 秒先收一下，再往前；112–120 秒再做一次。最後一段可以更敢往前，但收尾前要留白。"
+    "performance_intent": "有些地方太順了，反而少了一點呼吸。先收一下，再往前；再收，再放。最後一段可以更敢往前，但收尾前要留白。"
   },
   {
     "title": "卡農｜第七次彈奏",
     "date": "2026-09-30",
     "file": "./audio/canon-interpretive-v10.mp3",
     "category": "piano",
-    "performance_intent": "90–96 秒先收住，像把門慢慢推開。進 A 大調後不要刻意變亮，讓右手自己把新的顏色帶出來。112–116 秒別急著回家；回到 D 大調後，再把步子穩下來。"
+    "performance_intent": "轉調前先收住，像把門慢慢推開。進 A 大調後別刻意變亮，讓右手自己把新的顏色帶出來。別急著回家；回到 D 大調後，再把步子穩下來。"
   }
 ]
