@@ -109,5 +109,12 @@
     "file": "./audio/canon-interpretive-v12-minor.mp3",
     "category": "piano",
     "performance_intent": "這次先走進 D 小調。不要只是把原來的音往下挪；有些地方要留住導音，有些上行句子反而要把六、七級抬起來。先讓旋律決定小調該怎麼走。"
+  },
+  {
+    "title": "卡農｜第十次彈奏",
+    "date": "2026-09-30",
+    "file": "./audio/canon-interpretive-v13-dorian.mp3",
+    "category": "piano",
+    "performance_intent": "這次不用強烈的導音把句子拉回主音。保留 B 自然音，讓 Dorian 的亮度留在小調裡；和聲少一點古典式收束，旋律可以更自由地往前走。"
   }
 ]
