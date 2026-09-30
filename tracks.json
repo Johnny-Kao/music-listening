@@ -52,48 +52,48 @@
     "date": "2026-09-28",
     "file": "./audio/canon-humanized-v1.mp3",
     "category": "piano",
-    "performance_intent": "第一次把卡農往真人演奏方向調整，先找整體的流動感。"
+    "performance_intent": "第一次練這首，先把整體走向彈順，記住哪些地方容易趕、哪些地方需要留呼吸。"
   },
   {
     "title": "卡農｜第二次彈奏",
     "date": "2026-09-28",
     "file": "./audio/canon-interpretive-v5.mp3",
     "category": "piano",
-    "performance_intent": "讓句子更連續，減少每個音像被切開的感覺。"
+    "performance_intent": "這次練習把句子接得更完整，避免每個音都彈得太分開。"
   },
   {
     "title": "卡農｜第三次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v6.mp3",
     "category": "piano",
-    "performance_intent": "開始把力度、左右手差異與句子呼吸加入演奏。"
+    "performance_intent": "開始注意右手旋律和左手伴奏的層次，也練習在句尾留一點呼吸。"
   },
   {
     "title": "卡農｜第四次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v7.mp3",
     "category": "piano",
-    "performance_intent": "讓重音、力度與呼吸不要每次都一樣。"
+    "performance_intent": "這次特別練重音不要固定落在同一種位置，讓力度跟著句子走。"
   },
   {
     "title": "卡農｜第五次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v8.mp3",
     "category": "piano",
-    "performance_intent": "使用更自然的鋼琴音色，重點轉向情緒、力度與速度的演奏表達。"
+    "performance_intent": "把注意力放在音色、力度和速度的變化，不只把音彈對，也要讓整段有起伏。"
   },
   {
     "title": "卡農｜第六次彈奏",
     "date": "2026-09-30",
     "file": "./audio/canon-interpretive-v9.mp3",
     "category": "piano",
-    "performance_intent": "把太用力、太平均的重音收掉，讓手指重量有層次；在過度順暢的地方加入自然偏差，並在後段用稍微拖一下、再跳出去的方式增加炫技感與情緒。"
+    "performance_intent": "這次提醒自己不要每個重音都壓得太滿；有些地方收一點、拖一點，後段再把動能帶起來。"
   },
   {
     "title": "卡農｜第七次彈奏",
     "date": "2026-09-30",
     "file": "./audio/canon-interpretive-v10.mp3",
     "category": "piano",
-    "performance_intent": "中後段短暫轉到 A 大調，保留原本主旋律的節奏與輪廓，讓同一個主題突然進入更明亮、華麗的空間，再經過和弦準備回到 D 大調。"
+    "performance_intent": "中後段試著轉到 A 大調，練習在不丟掉主旋律的情況下換一個更明亮的色彩，再穩穩回到 D 大調。"
   }
 ]
