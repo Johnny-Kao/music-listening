@@ -52,48 +52,48 @@
     "date": "2026-09-28",
     "file": "./audio/canon-practice-01.mp3",
     "category": "piano",
-    "performance_intent": "第一次練這首，先把整體走向彈順，記住哪些地方容易趕、哪些地方需要留呼吸。"
+    "performance_intent": "0–20 秒先把速度穩住，不要因為旋律熟悉就往前趕；約 35–50 秒注意右手句子要連起來，左手維持輕一點；約 105 秒之後提醒自己不要急著收尾，讓最後幾個句子自然放慢。"
   },
   {
     "title": "卡農｜第二次彈奏",
     "date": "2026-09-28",
     "file": "./audio/canon-interpretive-v5.mp3",
     "category": "piano",
-    "performance_intent": "這次練習把句子接得更完整，避免每個音都彈得太分開。"
+    "performance_intent": "0–25 秒先把拍子和呼吸固定下來；約 45–70 秒右手要更像一整句，不要每個音都各自落下；約 90–115 秒逐步把力度帶上去，但左手不要跟著變重；最後 15–20 秒開始放鬆速度。"
   },
   {
     "title": "卡農｜第三次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v6.mp3",
     "category": "piano",
-    "performance_intent": "開始注意右手旋律和左手伴奏的層次，也練習在句尾留一點呼吸。"
+    "performance_intent": "約 30–50 秒開始更明確地分開左右手層次，右手旋律往前、左手只托住；約 75–95 秒可以增加一些重量，但不要每個重音都一樣；約 108 秒之後提前進入漸慢，不要等到最後兩三秒才突然煞車。"
   },
   {
     "title": "卡農｜第四次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v7.mp3",
     "category": "piano",
-    "performance_intent": "這次特別練重音不要固定落在同一種位置，讓力度跟著句子走。"
+    "performance_intent": "約 35–50 秒提醒自己右手要更連續，句子中間不要切碎；約 60–80 秒讓重音跟著旋律方向移動，不要固定在相同位置；約 105 秒後逐漸收掉速度和力度，讓結尾有比較長的呼吸。"
   },
   {
     "title": "卡農｜第五次彈奏",
     "date": "2026-09-29",
     "file": "./audio/canon-interpretive-v8.mp3",
     "category": "piano",
-    "performance_intent": "把注意力放在音色、力度和速度的變化，不只把音彈對，也要讓整段有起伏。"
+    "performance_intent": "約 35–50 秒保持右手連貫，但觸鍵不要太黏；約 80–96 秒是比較容易彈得過重的一段，提醒自己把攻擊感收一點，讓力度往句子高點集中；約 110 秒之後開始慢慢退下來，結尾不要突然變弱。"
   },
   {
     "title": "卡農｜第六次彈奏",
     "date": "2026-09-30",
     "file": "./audio/canon-interpretive-v9.mp3",
     "category": "piano",
-    "performance_intent": "這次提醒自己不要每個重音都壓得太滿；有些地方收一點、拖一點，後段再把動能帶起來。"
+    "performance_intent": "約 35–45 秒不要把句子彈得過度平順，手上的重量可以有一點前後變化；約 96–104 秒先稍微壓住再往前帶，112–120 秒再做一次類似的速度起伏；約 126–133 秒最後一段可以更有推進感，但收尾前要留出呼吸。"
   },
   {
     "title": "卡農｜第七次彈奏",
     "date": "2026-09-30",
     "file": "./audio/canon-interpretive-v10.mp3",
     "category": "piano",
-    "performance_intent": "中後段試著轉到 A 大調，練習在不丟掉主旋律的情況下換一個更明亮的色彩，再穩穩回到 D 大調。"
+    "performance_intent": "約 90–96 秒先讓速度稍微收住，準備進入新的調性；約 96–112 秒轉到 A 大調後，右手主旋律仍要保持原本的節奏和輪廓，只把整體感覺帶得更明亮；約 112–116 秒不要急著回 D 大調，先把和聲方向交代清楚；116 秒之後回到原調，速度也一起穩下來。"
   }
 ]
