@@ -91,6 +91,9 @@
     .entry-preview{max-width:650px;margin:9px 0 0;color:#675e50;font-size:14px;line-height:1.65}
     details[open] .entry-preview{display:none}
     .open-hint{margin-top:10px;color:var(--muted);font-family:var(--sans);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+    .summary-actions{display:flex;align-items:center;gap:14px;margin-top:12px}
+    .quick-play{appearance:none;min-height:32px;padding:4px 10px 3px;border:1px solid rgba(111,63,58,.32);border-radius:999px;background:rgba(255,255,255,.10);color:var(--burgundy);font-family:var(--sans);font-size:9px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+    .quick-play:hover,.quick-play:focus-visible{background:rgba(111,63,58,.07);outline:none;border-color:var(--burgundy)}
     .hint-close{display:none}details[open] .hint-open{display:none}details[open] .hint-close{display:inline}
     .marginal-label{position:relative;margin-top:2px;padding:8px 0 6px 18px;color:rgba(82,68,46,.68);font-family:var(--hand);font-size:14px;line-height:1.5;transform:rotate(-1.2deg)}
     .marginal-label::before{content:"";position:absolute;top:2px;bottom:0;left:0;width:1px;background:rgba(111,63,58,.25)}
@@ -259,7 +262,7 @@
                 </div>
                 <h3 class="entry-title">${title}</h3>
                 ${preview?`<p class="entry-preview">${preview}</p>`:""}
-                <div class="open-hint"><span class="hint-open">Open study ↓</span><span class="hint-close">Close study ↑</span></div>
+                <div class="summary-actions"><button class="quick-play" type="button" data-quick-play>▶ Quick listen</button><div class="open-hint"><span class="hint-open">Open study ↓</span><span class="hint-close">Close study ↑</span></div></div>
               </div>
               <aside class="marginal-label" aria-hidden="true">${margin}</aside>
             </div>
@@ -301,6 +304,7 @@
       const pct=audio.duration?(audio.currentTime/audio.duration)*100:0;
       button.textContent=audio.paused?"▶":"Ⅱ";
       button.setAttribute("aria-label",`${audio.paused?"播放":"暫停"} ${button.closest(".entry").querySelector(".entry-title")?.textContent||"音訊"}`);
+      const quick=audio.closest(".entry")?.querySelector("[data-quick-play]");if(quick)quick.textContent=audio.paused?"▶ Quick listen":"Ⅱ Pause";
       current.textContent=formatTime(audio.currentTime);duration.textContent=formatTime(audio.duration);
       progress.value=Number.isFinite(pct)?pct:0;progress.style.setProperty("--played",`${Number.isFinite(pct)?pct:0}%`);
       status.textContent=audio.paused?(status.dataset.idle||status.textContent):"Playing";
@@ -316,6 +320,7 @@
     function bindInteractions(){
       document.addEventListener("click",e=>{
         const share=e.target.closest(".share-button");if(share){shareTrack(share);return}
+        const quick=e.target.closest("[data-quick-play]");if(quick){e.preventDefault();e.stopPropagation();const entry=quick.closest(".entry"),a=entry?.querySelector("audio.native-audio");if(!a)return;if(a.paused){pauseOtherAudio(a);a.play().catch(()=>showToast("Audio could not start"))}else a.pause();return}
         const play=e.target.closest("[data-play]");if(play){const a=play.closest("[data-player]").querySelector("audio");if(a.paused){pauseOtherAudio(a);a.play().catch(()=>showToast("Audio could not start"))}else a.pause()}
       });
       document.addEventListener("input",e=>{const p=e.target.closest("[data-progress]");if(!p)return;const a=p.closest("[data-player]").querySelector("audio");if(Number.isFinite(a.duration)&&a.duration>0)a.currentTime=(Number(p.value)/100)*a.duration});
